@@ -1,6 +1,13 @@
 import React, {Component} from 'react';
 import './App.css';
 import Customer from './components/Customer';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import TableCell from '@mui/material/TableCell';
+import Paper from '@mui/material/Paper';
+import withStyles from '@mui/material/core/styles'
 
 const customers = [{
   'id':1,
@@ -31,19 +38,33 @@ const customers = [{
 class App extends Component {
   render() {
     return (
-      <div>
-        {customers.map((index)=>{
-        return(
-        <Customer
-          key={index.id+index.name}
-          id={index.id}
-          image={index.image}
-          name={index.name}
-          birthday={index.birthday}
-          gender={index.gender}
-          job={index.job}
-        />)})}
-      </div>
+      <Paper>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>번호</TableCell>
+              <TableCell>사진</TableCell>
+              <TableCell>이름</TableCell>
+              <TableCell>생년월일</TableCell>
+              <TableCell>성별</TableCell>
+              <TableCell>직업</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+              {customers.map((index)=>{
+                return(
+                  <Customer
+                    key={index.id}
+                    id={index.id}
+                    image={index.image}
+                    name={index.name}
+                    birthday={index.birthday}
+                    gender={index.gender}
+                    job={index.job}
+                  />);})}
+          </TableBody>
+        </Table>
+      </Paper>
     );
   }
 }
